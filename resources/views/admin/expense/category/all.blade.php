@@ -7,10 +7,10 @@
           <div class="card-header">
             <div class="row">
                 <div class="col-md-8 card_title_part">
-                    <i class="fab fa-gg-circle"></i>All Income Category Information
+                    <i class="fab fa-gg-circle"></i>All Expence Category Information
                 </div>  
                 <div class="col-md-4 card_button_part">
-                    <a href="{{url('dashboard/income/category/add')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
+                    <a href="{{url('dashboard/expense/category/add')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
                 </div>  
             </div>
           </div>
@@ -24,19 +24,19 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($allData as $data)
+                @foreach($all as $data)
                 <tr>
-                  <td>{{$data->incate_name}}</td>
-                  <td>{{$data->incate_remarks}}</td>
+                  <td>{{$data->expcate_name}}</td>
+                  <td>{{$data->expcate_remarks}}</td>
                   <td>
                       <div class="btn-group btn_group_manage" role="group">
                         <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                         <ul class="dropdown-menu">
 
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/category/view/'.$data->incate_slug)}}">View</a></li>
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/category/edit/'.$data->incate_slug)}}">Edit</a></li>
+                          <li><a class="dropdown-item" href="{{url('/dashboard/expense/category/view/'.$data->expcate_slug)}}">View</a></li>
+                          <li><a class="dropdown-item" href="{{url('/dashboard/expense/category/edit/'.$data->expcate_slug)}}">Edit</a></li>
                           </li>
-                         <li><a class="dropdown-item" href="#" id="softDelete"data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{$data->incate_id}}">Delete</a>
+                         <li><a class="dropdown-item" href="#" id="softDelete"data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{$data->expcate_id}}">Delete</a>
                         </ul>
                       </div>
                   </td>
@@ -59,7 +59,7 @@
 <!-- Modal -->
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-   <form method="POST" action="{{url('dashboard/income/category/softdelete')}}">
+   <form method="POST" action="{{url('dashboard/expense/category/softdelete')}}">
      @csrf
     <div class="modal-content modal_content">
       <div class="modal-header modal_header">

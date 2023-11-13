@@ -6,11 +6,11 @@
           <div class="card-header">
             <div class="row">
                 <div class="col-md-8 card_title_part">
-                    <i class="fab fa-gg-circle"></i>View Income category Information
+                    <i class="fab fa-gg-circle"></i>View Expense category Information
                  </div>  
                 <div class="col-md-4 card_button_part">
-                    <a href="{{url('dashboard/income/category')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All User</a>
-                </div>  
+                    <a href="{{url('dashboard/expense/category')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Category</a>
+                </div>   
             </div>
           </div>
           <div class="card-body">
@@ -19,37 +19,31 @@
                 <div class="col-md-8">
                     <table class="table table-bordered table-striped table-hover custom_view_table">
                       <tr>
-                        <td>Income Category</td>  
+                        <td>Expense Category</td>  
                         <td>:</td>  
-                        <td>{{$data->incate_name}}</td>  
+                        <td>{{$data->expcate_name}}</td>  
                       </tr>
                       <tr>
                         <td>Remarks</td>  
                         <td>:</td>  
-                        <td>{{$data->incate_remarks}}</td>  
+                        <td>{{$data->expcate_remarks}}</td>  
                       </tr>  
                       <tr>
-                        <td>Creator</td>  
+                        <td>Creator Info</td>  
                         <td>:</td>  
-                        <td>{{$data->creatorInfo->name}}</td>  
+                        <td>
+                          {{$data->creatorInfo->name}}<br>
+                          {{$data->created_at->format('d-M-Y  |  h:i:s A')}} 
+                        </td>  
                       </tr> 
-                      <tr>
-                        <td>Created Time</td>  
-                        <td>:</td>  
-                        <td>{{$data->created_at->format('d-M-Y  |  h:i:s A')}}</td>  
-                        <td>{{$data->created_at->diffForHumans()}}</td>  
-                      </tr>
-                      @if($data->incate_editor!='')
+                      @if($data->expcate_editor!='')
                        <tr>
-                        <td>Editor</td>  
+                        <td>Editor Info</td>  
                         <td>:</td>  
-                        <td>{{$data->editorInfo->name}}</td>  
-                      </tr>
-
-                          <tr> 
-                        <td>Update Time</td>  
-                        <td>:</td>  
-                        <td>{{$data->updated_at->format('d-M-Y  |  h:i:s A')}}</td>  
+                        <td>
+                          {{$data->editorInfo->name}}<br>
+                          {{$data->updated_at->format('d-M-Y  |  h:i:s A')}} 
+                        </td>  
                       </tr> 
                       @endif                   
                     </table>

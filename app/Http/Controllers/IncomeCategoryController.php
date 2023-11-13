@@ -33,7 +33,6 @@ class IncomeCategoryController extends Controller{
 
 
       public function view($slug){
-
         $data=IncomeCategory::where('incate_status',1)->where('incate_slug',$slug)->firstOrFail();
         return view('admin.income.category.view',compact('data'));
         
@@ -98,13 +97,55 @@ class IncomeCategoryController extends Controller{
         return redirect('dashboard/income/category/edit/'.$slug);
        }
 
-}
+  }
     public function softdelete(){
+     $id=$_POST['modal_id'];
+     $soft=IncomeCategory::where('incate_status',1)->where('incate_id',$id)->update([
+     'incate_status'=>0,
+     'updated_at'=>Carbon::now()->toDateTimeString(),
+     ]);
+
+        if($soft){
+        Session::flash('success','Successfully delete category information.');
+        return redirect('dashboard/income/category');
+        }else{
+        Session::flash('error','Opps! operation failed.');
+        return redirect('dashboard/income/category');
+       }
 
     }
+
 
     public function restore(){
-        
+          $id=$_POST['modal_id'];
+         $restore=IncomeCategory::where('incate_status',0)->where('incate_id',$id)->update([
+         'incate_status'=>1,
+         'updated_at'=>Carbon::now()->toDateTimeString(),
+         ]);
+
+        if($restore){
+        Session::flash('success','Successfully restore category information.');
+        return redirect('dashboard/recycle/income/category');
+        }else{
+        Session::flash('error','Opps! operation failed.');
+        return redirect('dashboard/recycle/income/category');
+       }  
     }
 
-}
+
+    public function delete(){
+          $id=$_POST['modal_id'];
+         $delete=IncomeCategory::where('incate_status',0)->where('incate_id',$id)->delete([]);
+
+        if($delete){
+        Session::flash('success','Successfully parmanently delete category information.');
+        return redirect('dashboard/recycle/income/category');
+        }else{
+        Session::flash('error','Opps! operation failed.');
+        return redirect('dashboard/recycle/income/category'); 
+    }
+
+  }
+
+  
+ }

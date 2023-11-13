@@ -16,13 +16,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phone',20)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('username',30)->unique();
+            $table->integer('role')->default(5);
+            $table->string('photo',50)->nullable();
+            $table->string('slug',30)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.

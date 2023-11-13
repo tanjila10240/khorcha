@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('expense_categories', function (Blueprint $table) {
-            $table->bigIncrements('incate_id');
+            $table->bigIncrements('expcate_id');
             $table->string('expcate_name',50)->unique();
             $table->string('expcate_remarks',200)->nullable();
             $table->integer('expcate_creator')->nullable();

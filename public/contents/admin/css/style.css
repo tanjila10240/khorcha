@@ -68,7 +68,7 @@ body{
 
 .sidebar_part{
     background-color: #252c34;
-    height: 88vh;
+    min-height: 100vh!important;
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -84,6 +84,7 @@ body{
     height: 80px;
     border-radius: 50%;
     border:2px solid #ddd;
+    
 }
 
 .user_part h5{
@@ -288,4 +289,28 @@ span.req_star{
 }
 .invalid-feedback{
     display: block;
+}
+
+.modal_content{
+
+}
+
+.modal_header{
+
+}   
+
+
+.modal_body{
+
+}
+   
+.modal_footer{
+
+}
+
+.modal_title{
+    font-size: 20px;
+    font-weight: 700;
+
+
 }

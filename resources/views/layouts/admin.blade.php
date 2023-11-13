@@ -6,6 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datepicker.css">
+    
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datatables.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/all.min.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/style.css">
   </head>
@@ -47,8 +50,12 @@
                     <div class="menu">
                         <ul> 
                             <li><a href="{{url('dashboard')}}"><i class="fas fa-home"></i> Dashboard</a></li>
+                            @if(Auth::user()->role=='1')
                             <li><a href="{{url('dashboard/user')}}"><i class="fas fa-user-circle"></i> Users</a></li>
+                            @endif
+                            @if(Auth::user()->role<='2')
                             <li><a href="{{url('dashboard/income')}}"><i class="fas fa-wallet"></i> Income</a></li>
+                            @endif
                             <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-coins"></i> Expense</a></li>
                             <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-file-alt"></i> Reports</a></li>
                             <li><a href="#"><i class="fas fa-trash"></i> Recycle bin</a></li>
@@ -84,6 +91,8 @@
         </div>
     </footer>
     <script src="{{asset('contents/admin')}}/js/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('contents/admin')}}/js/bootstrap-datepicker.js"></script>
+    <script src="{{asset('contents/admin')}}/js/datatables.min.js"></script>
     <script src="{{asset('contents/admin')}}/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('contents/admin')}}/js/custom.js"></script>
   </body>
