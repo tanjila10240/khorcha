@@ -4,12 +4,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-3">
-          <div class="card-header">
+          <div class="card-header no_print">
             <div class="row">
-                <div class="col-md-8 card_title_part">
+                <div class="col-md-8 card_title_part no_print">
                     <i class="fab fa-gg-circle"></i>All Income Information
                 </div>  
-                <div class="col-md-4 card_button_part">
+                <div class="col-md-4 card_button_part no_print">
                     <a href="{{url('dashboard/income/add')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Income</a>
                 </div>  
             </div>
@@ -39,7 +39,7 @@
                   <th>Title</th>
                   <th>Category</th>
                   <th>Amount</th>
-                  <th>Manage</th>
+                  <th class="no_print">Manage</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,7 +48,7 @@
                   <td>{{date('d-m-Y',strtotime($data->income_date))}}</td>
                   <td>{{$data->income_title}}</td>
                   <td>{{$data->categoryInfo->incate_name}}</td>
-                  <td>{{number_format($data->income_amount,2)}}</td> 
+                  <td class="no_print">{{number_format($data->income_amount,2)}}</td> 
                   <td>
                       <div class="btn-group btn_group_manage" role="group">
                         <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
@@ -66,11 +66,11 @@
               </tbody>
             </table>
           </div>
-          <div class="card-footer">
+          <div class="card-footer no_print">
             <div class="btn-group" role="group" aria-label="Button group">
-              <button type="button" class="btn btn-sm btn-dark">Print</button>
-              <button type="button" class="btn btn-sm btn-secondary">PDF</button>
-              <button type="button" class="btn btn-sm btn-dark">Excel</button>
+              <button onclick="window.print()" class="btn btn-sm btn-dark">Print</button>
+              <a href="{{url('dashboard/income/pdf')}}" class="btn btn-sm btn-secondary">PDF</a>
+              <a href="{{url('dashboard/income/excel')}}"class="btn btn-sm btn-dark">Excel</a>
             </div>
           </div>  
         </div>

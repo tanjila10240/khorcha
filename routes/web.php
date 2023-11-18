@@ -34,8 +34,8 @@ Route::get('/dashboard', [AdminController::class, 'index']);
 
 Route::get('dashboard/user', [UserController::class, 'index']);
 Route::get('dashboard/user/add', [UserController::class, 'add']);
-Route::get('dashboard/user/edit', [UserController::class, 'edit']);
-Route::get('dashboard/user/view', [UserController::class, 'view']);
+Route::get('dashboard/user/edit/{slug}', [UserController::class, 'edit']);
+Route::get('dashboard/user/view/{slug}', [UserController::class, 'view']);
 Route::post('dashboard/user/submit', [UserController::class, 'insert']);
 Route::post('dashboard/user/update', [UserController::class, 'update']);
 Route::post('dashboard/user/softdelete', [UserController::class, 'softdelete']);
@@ -54,6 +54,8 @@ Route::post('dashboard/income/update', [IncomeController::class, 'update']);
 Route::post('dashboard/income/softdelete', [IncomeController::class, 'softdelete']);
 Route::post('dashboard/income/restore', [IncomeController::class, 'restore']);
 Route::post('dashboard/income/delete', [IncomeController::class, 'delete']);
+Route::get('dashboard/income/pdf', [IncomeController::class, 'pdf']);
+Route::get('dashboard/income/excel', [IncomeController::class, 'excel']);
 
 
 Route::get('dashboard/income/category', [IncomeCategoryController::class, 'index']);

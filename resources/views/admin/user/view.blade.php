@@ -21,33 +21,37 @@
                       <tr>
                         <td>Name</td>  
                         <td>:</td>  
-                        <td>Saidul Islam Uzzal</td>  
+                        <td>{{$data->name}}</td>  
                       </tr>
                       <tr>
                         <td>Phone</td>  
                         <td>:</td>  
-                        <td>01710726035</td>  
+                        <td>{{$data->phone}}</td>  
                       </tr>
                       <tr>
                         <td>Email</td>  
                         <td>:</td>  
-                        <td>uzzalbd.creative</td>  
+                        <td>{{$data->email}}</td>  
                       </tr>
                       <tr>
                         <td>Username</td>  
                         <td>:</td>  
-                        <td>uzzalbd</td>  
+                        <td>{{$data->username}}</td>  
                       </tr>
                       <tr>
                         <td>Role</td>  
                         <td>:</td>  
-                        <td>---</td>  
+                        <td>{{$data->roleInfo->role_name}}</td>  
                       </tr>
                       <tr>
                         <td>Photo</td>  
                         <td>:</td>  
                         <td>
-                            <img class="img200" src="{{asset('contents/admin')}}/images/avatar.jpg" alt=""/>  
+                          @if($data->photo!='')
+                          <img height="100" src="{{asset('uploads/users/'.$data->photo)}}" alt="User Photo"/>
+                          @else
+                           <img height="100" src="{{asset('contents/admin')}}/images/avatar.png" alt="avatar"/>
+                          @endif
                         </td>  
                       </tr>
                     </table>

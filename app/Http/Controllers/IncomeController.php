@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\IncomeExport;
 use Illuminate\Support\str;
 use App\Models\Income;
 use Carbon\Carbon;
 use Session;
 use Auth;
+use Excel;
+use PDF; 
 
 
 
@@ -157,5 +160,16 @@ public function restore(){
         return redirect('dashboard/recycle/income'); 
     }
 
+  }
+
+  public function pdf(){
+      $all=Income::where('income_status',1)->orderBy('income_date','DESC')->get();
+      $pdf = PDF::loadView('admin.income.main.pdf',compact('all')); 
+      return $pdf->download('income_'.time().'.pdf');
+  }
+
+
+  public function excel(){
+     return Excel::download(new IncomeExport, 'income.xlsx');
   }
 }

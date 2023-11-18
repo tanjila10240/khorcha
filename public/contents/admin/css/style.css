@@ -314,3 +314,19 @@ span.req_star{
 
 
 }
+
+
+.img_margin img {
+    margin: -56px 34px 11px 46px;
+}
+
+.table_bottom{
+  border-bottom: 2px solid black;
+}
+
+
+@media print {
+  .no_print{
+   display: none!important; 
+  }
+}
