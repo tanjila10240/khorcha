@@ -40,7 +40,7 @@ $(document).ready(function(){
 //     $('#alltableinfo').DataTable({
 //       "paging":true,
 //       "lengthChange":true,
-//       "searhing":false,
+//       "searhing":true,
 //       "ordering":true,
 //       "info":true,
 //       "autoWidth":false,

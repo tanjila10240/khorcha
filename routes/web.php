@@ -90,7 +90,9 @@ Route::post('dashboard/expense/category/softdelete', [ExpenseCategoryController:
 Route::post('dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore']);
 Route::post('dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete']);
 
-Route::get('dashboard/Report', [ReportController::class, 'index']);
+Route::get('dashboard/report', [ReportController::class, 'index']);
+Route::get('dashboard/report/summary', [ReportController::class, 'summary']);
+Route::get('dashboard/report/current/month', [ReportController::class, 'current_month']);
 
 Route::get('dashboard/recycle', [RecycleController::class, 'index']);
 Route::get('dashboard/recycle/user', [RecycleController::class, 'user']);

@@ -1,21 +1,28 @@
 @extends('layouts.admin')
 @section('content')
-
+@php
+  $allIncome=App\Models\Income::where('income_status',1)->get();
+  $allExpense=App\Models\Expense::where('expense_status',1)->get();
+  $total_income=App\Models\Income::where('income_status',1)->sum('income_amount');
+  $total_expense=App\Models\Expense::where('expense_status',1)->sum('expense_amount');
+  $total_savings=($total_income - $total_expense);
+@endphp
 <div class="row">
     <div class="col-md-12">
         <div class="card mb-3">
-          <div class="card-header no_print">
+          <div class="card-header no_print"> 
             <div class="row">
                 <div class="col-md-8 card_title_part no_print">
-                    <i class="fab fa-gg-circle"></i>All Income Information
+                    <i class="fab fa-gg-circle"></i>Income Expense Summary
                 </div>  
                 <div class="col-md-4 card_button_part no_print">
-                    <a href="{{url('dashboard/income/add')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Income</a>
+                    <a href="{{url('dashboard/income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a>
+                    <a href="{{url('dashboard/expense')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Expense</a>
                 </div>  
             </div>
           </div>
           <div class="card-body">
-             <!-- alert sms code start      -->
+             <!-- alert sms code start  -->
             <div class="row">
              <div class="col-md-12">
             @if(Session::has('success'))
@@ -38,32 +45,45 @@
                   <th>Date</th>
                   <th>Title</th>
                   <th>Category</th>
-                  <th>Amount</th>
-                  <th class="no_print">Manage</th>
+                  <th>Income</th>
+                  <th>Expense</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($all as $data)
+                @foreach($allIncome as $income)
                 <tr>
-                  <td>{{date('d-m-Y',strtotime($data->income_date))}}</td>
-                  <td>{{$data->income_title}}</td>
-                  <td>{{$data->categoryInfo->incate_name}}</td>
-                  <td class="no_print">{{number_format($data->income_amount,2)}}</td> 
-                  <td>
-                      <div class="btn-group btn_group_manage" role="group">
-                        <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                        <ul class="dropdown-menu">
-
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/view/'.$data->income_slug)}}">View</a></li>
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/edit/'.$data->income_slug)}}">Edit</a></li>
-                          
-                         <li><a class="dropdown-item" href="#" id="softDelete"data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{$data->income_id}}">Delete</a></li>
-                        </ul>
-                      </div>
-                  </td>
+                  <td>{{date('d-m-Y',strtotime($income->income_date))}}</td>
+                  <td>{{$income->income_title}}</td>
+                  <td>{{$income->categoryInfo->incate_name}}</td>
+                  <td>{{number_format($income->income_amount,2)}}</td>  
+                  <td></td> 
+                </tr>
+                @endforeach
+                @foreach($allExpense as $expense)
+                <tr>
+                  <td>{{date('d-m-Y',strtotime($expense->expense_date))}}</td>
+                  <td>{{$expense->expense_title}}</td>
+                  <td>{{$expense->categoryInfo->expcate_name}}</td>               
+                  <td></td>
+                  <td>{{number_format($expense->expense_amount,2)}}</td>   
                 </tr>
                 @endforeach
               </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="3" class="text-end">Total :</th>
+                  <th>{{number_format($total_income,2) }}</th>
+                  <th>{{number_format($total_expense,2) }}</th>
+                </tr>
+                  <tr>
+                  @if($total_savings >= 0)    
+                  <th colspan="3" class="text-end text-success">Savings :</th>
+                  @else
+                  <th colspan="3" class="text-end text-danger">Over Expense :</th>
+                  @endif         
+                  <th>{{number_format($total_savings,2)}}</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
           <div class="card-footer no_print">

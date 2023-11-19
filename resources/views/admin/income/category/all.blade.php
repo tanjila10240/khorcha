@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="card-body">
-            <table id="myTable" class="table table-bordered table-striped table-hover custom_table">
+            <table id="alltableinfo" class="table table-bordered table-striped table-hover custom_table">
               <thead class="table-dark">
                 <tr>
                   <th>Name</th>
@@ -32,11 +32,9 @@
                       <div class="btn-group btn_group_manage" role="group">
                         <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                         <ul class="dropdown-menu">
-
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/category/view/'.$data->incate_slug)}}">View</a></li>
-                          <li><a class="dropdown-item" href="{{url('/dashboard/income/category/edit/'.$data->incate_slug)}}">Edit</a></li>
-                          </li>
-                         <li><a class="dropdown-item" href="#" id="softDelete"data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{$data->incate_id}}">Delete</a>
+                       <li><a class="dropdown-item" href="{{url('/dashboard/income/category/view/'.$data->incate_slug)}}">View</a></li>
+                          <li><a class="dropdown-item" href="{{url('/dashboard/income/category/edit/'.$data->incate_slug)}}">Edit</a></li>   
+                         <li><a class="dropdown-item" href="#" id="softDelete"data-bs-toggle="modal" data-bs-target="#softDeleteModal" data-id="{{$data->incate_id}}">Delete</a></li>
                         </ul>
                       </div>
                   </td>

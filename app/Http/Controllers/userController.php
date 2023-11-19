@@ -141,11 +141,50 @@ public function update(Request $request){
 }
 
 public function softdelete(){
+    $id=$_POST['modal_id'];
+      $soft=User::where('status',1)->where('id',$id)->update([
+     'status'=>0,
+     'updated_at'=>Carbon::now()->toDateTimeString(),
+     ]);
 
+      if($soft){
+      Session::flash('success','Successfully delete user information.');
+      return redirect('dashboard/user');
+      }else{
+      Session::flash('error','Opps! operation failed.');
+      return redirect('dashboard/user');
+     }
 }
 
 public function restore(){
-    
-}
+     $id=$_POST['modal_id'];
+     $restore=User::where('status',0)->where('id',$id)->update([
+     'status'=>1,
+     'updated_at'=>Carbon::now()->toDateTimeString(),
+    ]);
+
+    if($restore){
+    Session::flash('success','Successfully restore user information.');
+    return redirect('dashboard/recycle/user');
+    }else{
+    Session::flash('error','Opps! operation failed.');
+    return redirect('dashboard/recycle/user');
+   }  
+  }
+
+       public function delete(){
+        $id=$_POST['modal_id'];
+        $delete=User::where('status',0)->where('id',$id)->delete([]);
+
+        if($delete){
+        Session::flash('success','Successfully parmanently delete information.');
+        return redirect('dashboard/recycle/user');
+        }else{
+        Session::flash('error','Opps! operation failed.');
+        return redirect('dashboard/recycle/user'); 
+    }
+
+  } 
 }
 
+    
