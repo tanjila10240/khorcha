@@ -56,8 +56,8 @@
                             <li><a href="{{url('dashboard/income')}}"><i class="fas fa-wallet"></i> Income</a></li>
                             @endif
                             <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-coins"></i> Expense</a></li>
-                            <li><a href="{{url('dashboard/expense')}}"><i class="fas fa-file-alt"></i> Reports</a></li>
-                            <li><a href="#"><i class="fas fa-trash"></i> Recycle bin</a></li>
+                            <li><a href="{{url('dashboard/report/summary')}}"><i class="fas fa-file-alt"></i> Reports</a></li>
+                            <li><a href="{{url('dashboard/recycle/income')}}"><i class="fas fa-trash"></i> Recycle bin</a></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </div>

@@ -1,11 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 @php
-  $allIncome=App\Models\Income::where('income_status',1)->get();
-  $allExpense=App\Models\Expense::where('expense_status',1)->get();
-  $total_income=App\Models\Income::where('income_status',1)->sum('income_amount');
-  $total_expense=App\Models\Expense::where('expense_status',1)->sum('expense_amount');
-  $total_savings=($total_income - $total_expense);
+
+  $all_income=App\Models\Income::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->groupby('year','month')->orderBy('income_date','DESC')->get();
+
+  $total_income=App\Models\Income::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->sum('income_amount');
+
+  $total_expense=App\Models\Expense::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->sum('expense_amount');
+
+  $allExpense=App\Models\Expense::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->groupby('year','month')->orderBy('expense_date','DESC')->get();
+
 @endphp
 <div class="row">
     <div class="col-md-12">
@@ -13,7 +17,7 @@
           <div class="card-header no_print"> 
             <div class="row">
                 <div class="col-md-8 card_title_part no_print">
-                    <i class="fab fa-gg-circle"></i>Income Expense Summary
+                    <i class="fab fa-gg-circle"></i>Income Expense Archive
                 </div>  
                 <div class="col-md-4 card_button_part no_print">
                     <a href="{{url('dashboard/income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a>
@@ -42,52 +46,30 @@
             <table id="myTable" class="table table-bordered table-striped table-hover custom_table">
               <thead class="table-dark">
                 <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Category</th>
+                  <th>Month</th>
                   <th>Income</th>
                   <th>Expense</th>
+                  <th>Savings</th>
+                  <th>Manage</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($allIncome as $income)
+                @foreach($all_income as $income)
                 <tr>
-                  <td>{{date('d-m-Y',strtotime($income->income_date))}}</td>
-                  <td>{{$income->income_title}}</td>
-                  <td>{{$income->categoryInfo->incate_name}}</td>
-                  <td>{{number_format($income->income_amount,2)}}</td>  
+                  <td>
+                  @php
+                   $year_month=$income->year.'-'.$income->month;
+                   $month_year=date('F-Y',strtotime($year_month));     
+                   echo $month_year;            
+                  @endphp
+                  </td>
+                  <td>{{$total_income}}</td>
+                  <td></td>
+                  <td></td>  
                   <td></td> 
                 </tr>
                 @endforeach
-                @foreach($allExpense as $expense)
-                <tr>
-                  <td>{{date('d-m-Y',strtotime($expense->expense_date))}}</td>
-                  <td>{{$expense->expense_title}}</td>
-                  <td>{{$expense->categoryInfo->expcate_name}}</td>               
-                  <td></td>
-                  <td>{{number_format($expense->expense_amount,2)}}</td>   
-                </tr>
-                @endforeach
               </tbody>
-              <tfoot>
-                <tr>
-                  <th colspan="3" class="fs-6 text-end bg-info bg-opacity-10 text-dark">Total :</th>
-                  <th class="fs-6 bg-success bg-opacity-10 text-success">{{number_format($total_income,2) }}</th>
-                  <th class="fs-6 bg-danger bg-opacity-10 text-danger">{{number_format($total_expense,2) }}</th>
-                </tr>
-                  <tr>
-                  @if($total_savings >= 0)    
-                  <th colspan="3" class="fs-6 bg-success bg-opacity-25 text-end text-success">Savings :</th>
-                  @else
-                  <th colspan="3" class="fs-6 bg-danger bg-opacity-25 text-end text-danger">Over Expense :</th>
-                  @endif
-                  @if($total_savings >= 0)            
-                  <th colspan="2" class="fs-6 bg-success bg-opacity-25 text-success">{{number_format($total_savings,2)}}</th>
-                  @else
-                  <th colspan="2" class="fs-6 bg-danger bg-opacity-25 text-danger">{{number_format($total_savings,2)}}</th>
-                  @endif
-                </tr>
-              </tfoot>
             </table>
           </div>
           <div class="card-footer no_print">

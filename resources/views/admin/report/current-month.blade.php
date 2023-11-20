@@ -1,10 +1,16 @@
 @extends('layouts.admin')
 @section('content')
 @php
-  $allIncome=App\Models\Income::where('income_status',1)->get();
-  $allExpense=App\Models\Expense::where('expense_status',1)->get();
-  $total_income=App\Models\Income::where('income_status',1)->sum('income_amount');
-  $total_expense=App\Models\Expense::where('expense_status',1)->sum('expense_amount');
+  $now=Carbon\Carbon::now()->toDateTimeString(); 
+  $year=date('m',strtotime($now));
+  $month=date('Y',strtotime($now));
+  $date=date('d',strtotime($now));
+  $monthName=date('F',strtotime($now));
+
+  $allIncome=App\Models\Income::where('income_status',1)->whereYear('income_date','=',$year)->whereMonth('income_date','=',$month)->get();
+  $allExpense=App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$year)->whereMonth('expense_date','=',$month)->get();
+  $total_income=App\Models\Income::where('income_status',1)->whereYear('income_date','=',$year)->whereMonth('income_date','=',$month)->sum('income_amount');
+  $total_expense=App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$year)->whereMonth('expense_date','=',$month)->sum('expense_amount');
   $total_savings=($total_income - $total_expense);
 @endphp
 <div class="row">
@@ -13,7 +19,7 @@
           <div class="card-header no_print"> 
             <div class="row">
                 <div class="col-md-8 card_title_part no_print">
-                    <i class="fab fa-gg-circle"></i>Income Expense Summary
+                    <i class="fab fa-gg-circle"></i>{{$monthName}} :: Income Expense statment
                 </div>  
                 <div class="col-md-4 card_button_part no_print">
                     <a href="{{url('dashboard/income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a>
