@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @php
+  echo $ami=$month;
   $now=Carbon\Carbon::now()->toDateTimeString(); 
   $year=date('Y',strtotime($now));
   $month=date('m',strtotime($now));

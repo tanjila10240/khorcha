@@ -7,7 +7,7 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datepicker.css">    
-    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datatables.css">
+    <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datatables.min.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/all.min.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/style.css">
   </head>

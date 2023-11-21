@@ -32,7 +32,7 @@
              <div class="col-md-2"></div>
            </div>
             <!-- alert sms code end      -->
-            <table id="myTable" class="table table-bordered table-striped table-hover custom_table">
+            <table id="alltableDesc" class="table table-bordered table-striped table-hover custom_table">
               <thead class="table-dark">
                 <tr>
                   <th>Date</th>

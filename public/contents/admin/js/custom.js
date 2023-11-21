@@ -34,28 +34,26 @@ $(document).ready(function(){
 
 	// datatables code start
 
-// 	$(document).ready( function () {
-// 	    $('#myTable').DataTable();
+	$(document).ready( function () {
+	    $('#myTable').DataTable();
 
-//     $('#alltableinfo').DataTable({
-//       "paging":true,
-//       "lengthChange":true,
-//       "searhing":true,
-//       "ordering":true,
-//       "info":true,
-//       "autoWidth":false,
-//     });
+    $('#alltableinfo').DataTable({
+      "paging":false,
+      "lengthChange":true,
+      "ordering":true,
+      "info":true,
+      "autoWidth":false,
+    });
 
-//   $('#alltableDesc').DataTable({
-//       "paging":true,
-//       "lengthChange":true,
-//       "searhing":false,
-//       "ordering":true,
-//       "order":[[0,"desc"]],
-//       "info":true,
-//       "autoWidth":false,
-//     });
-// });
+  $('#alltableDesc').DataTable({
+      "paging":true,
+      "lengthChange":true,
+      "ordering":true,
+      "order":[[0,"desc"]],
+      "info":true,
+      "autoWidth":false,
+    });
+});
 
 
   // Datepicker setting code start

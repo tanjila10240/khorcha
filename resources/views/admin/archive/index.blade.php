@@ -1,19 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 @php
+  $all_income=App\Models\Income::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->groupBy('year','month')->orderBy('income_date','DESC')->get();
 
-  $all_income=App\Models\Income::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->groupby('year','month')->orderBy('income_date','DESC')->get();
+  $all_expense=App\Models\Expense::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->groupBy('year','month')->orderBy('expense_date','DESC')->get();
 
-  $total_income=App\Models\Income::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->sum('income_amount');
-
-  $total_expense=App\Models\Expense::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->sum('expense_amount');
-
-  $allExpense=App\Models\Expense::select(DB::raw('count(*) as tatal'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->groupby('year','month')->orderBy('expense_date','DESC')->get();
-
-@endphp
+ 
+@endphp 
 <div class="row">
     <div class="col-md-12">
-        <div class="card mb-3">
+        <div class="card mb-3"> 
           <div class="card-header no_print"> 
             <div class="row">
                 <div class="col-md-8 card_title_part no_print">
@@ -53,22 +49,47 @@
                   <th>Manage</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody>    
                 @foreach($all_income as $income)
                 <tr>
                   <td>
                   @php
-                   $year_month=$income->year.'-'.$income->month;
-                   $month_year=date('F-Y',strtotime($year_month));     
-                   echo $month_year;            
+                   $year=$income->year;
+                   $month=$income->month;
+                   $year_month=$year.'-'.$month;
+                   $month_year=date('F-Y',strtotime($year_month)); 
+                   echo  $month_year;   
                   @endphp
+
                   </td>
-                  <td>{{$total_income}}</td>
-                  <td></td>
-                  <td></td>  
-                  <td></td> 
+                  <td>
+                    @php
+                    $total_income=App\Models\Income::where('income_status',1)->whereYear('income_date','=',$income->year)->whereMonth('income_date','=',$income->month)->sum('income_amount');
+                    echo number_format($total_income,2);   
+                    @endphp
+                  </td>
+                  <td>
+                     @php
+                    $total_expense=App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$income->year)->whereMonth('expense_date','=',$income->month)->sum('expense_amount');
+                    echo number_format($total_expense,2);   
+                    @endphp
+                  </td>
+                  <td>   
+                    @php
+                     $total_savings=($total_income - $total_expense);
+                     echo number_format($total_savings,2);
+                    @endphp
+                  </td>   
+                      <td>
+                      <div class="btn-group btn_group_manage" role="group">
+                        <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{url('/dashboard/archive/'.$month_year)}}">Details</a></li>
+                        </ul>
+                      </div>
+                  </td> 
                 </tr>
-                @endforeach
+                @endforeach 
               </tbody>
             </table>
           </div>
