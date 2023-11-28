@@ -38,61 +38,61 @@
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-facebook"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="facebook" value="{{$data->sm_facebook}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-twitter"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="twitter" value="{{$data->sm_twitter}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-instagram"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="instagram" value="{{$data->sm_instagram}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="linkedin" value="{{$data->sm_facebook}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-whatsapp"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="whatsapp" value="{{$data->sm_whatsapp}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-youtube"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="youtube" value="{{$data->sm_youtube}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-github"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="github" value="{{$data->sm_github}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-pinterest"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="pinterest" value="{{$data->sm_pinterest}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-behance-square"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="behance" value="{{$data->sm_behance}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fab fa-telegram"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="telegram" value="{{$data->sm_telegram}}"/>
                     </div>
                   </div>
                 </div>

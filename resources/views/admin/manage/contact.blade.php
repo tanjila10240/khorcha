@@ -38,73 +38,73 @@
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-phone-square-alt"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="phone1" value="{{$data->ci_phone1}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-phone-square-alt"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="phone2" value="{{$data->ci_phone2}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-phone-square-alt"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="phone3" value="{{$data->ci_phone3}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-phone-square-alt"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="phone4" value="{{$data->ci_phone4}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="email1" value="{{$data->ci_email1}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="email2" value="{{$data->ci_email2}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="email3" value="{{$data->ci_email3}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        <input type="text" class="form-control" name="" value=""/>
+                        <input type="text" class="form-control" name="email4" value="{{$data->ci_email4}}"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-home"></i></span>
-                        <textarea class="form-control" name="" rows=""></textarea>
+                        <textarea class="form-control" name="address1" rows="">{{$data->ci_address1}}</textarea>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-home"></i></span>
-                        <textarea class="form-control" name="" rows=""></textarea>
+                        <textarea class="form-control" name="address2" rows="">{{$data->ci_address2}}</textarea>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-home"></i></span>
-                        <textarea class="form-control" name="" rows=""></textarea>
+                        <textarea class="form-control" name="address3" rows="">{{$data->ci_address3}}</textarea>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fas fa-home"></i></span>
-                        <textarea class="form-control" name="" rows=""></textarea>
+                        <textarea class="form-control" name="address4" rows="">{{$data->ci_address4}}</textarea>
                     </div>
                   </div>
                 </div>
