@@ -26,11 +26,11 @@ return new class extends Migration
             $table->text('ci_address1')->nullable();
             $table->text('ci_address2')->nullable();
             $table->text('ci_address3')->nullable();
-            $table->text('ci_address4')->nullable();t
+            $table->text('ci_address4')->nullable();
             $table->integer('ci_creator')->nullable(); 
             $table->integer('ci_editor')->nullable(); 
             $table->string('ci_slug',30)->nullable();
-            $table->integer('ci_status')->defabasic(1);
+            $table->integer('ci_status')->default(1);
             $table->timestamps();
         });
     }

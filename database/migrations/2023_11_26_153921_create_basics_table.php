@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('basic_creator')->nullable(); 
             $table->integer('basic_editor')->nullable(); 
             $table->string('basic_slug',30)->nullable();
-            $table->integer('basic_status')->defabasic(1);
+            $table->integer('basic_status')->default(1);
             $table->timestamps();
         });
     }

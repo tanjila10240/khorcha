@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('sm_creator')->nullable(); 
             $table->integer('sm_editor')->nullable(); 
             $table->string('sm_slug',30)->nullable();
-            $table->integer('sm_status')->defabasic(1);
+            $table->integer('sm_status')->default(1);
             $table->timestamps();
         });
     }
