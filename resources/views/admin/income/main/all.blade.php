@@ -39,7 +39,7 @@
                   <th>Title</th>
                   <th>Category</th>
                   <th>Amount</th>
-                  <th class="no_print">Manage</th>
+                  <th>Manage</th>
                 </tr>
               </thead>
               <tbody>
