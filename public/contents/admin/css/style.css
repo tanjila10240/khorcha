@@ -365,3 +365,16 @@ span.req_star{
    display: none!important; 
   }
 }
+
+
+.secrch_btn{
+    margin: 2px;
+}
+
+.secrch_icon{
+    padding: 10px;
+}
+
+.pad_left_0{
+    padding-left: 0px !important;
+}

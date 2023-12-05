@@ -109,6 +109,7 @@ Route::get('dashboard/archive/{month}', [ArchiveController::class, 'month']);
 Route::get('dashboard/report', [ReportController::class, 'index']);
 Route::get('dashboard/report/summary', [ReportController::class, 'summary']);
 Route::get('dashboard/report/current/month', [ReportController::class, 'current_month']);
+Route::get('dashboard/report/search', [ReportController::class, 'search']);
 
 Route::get('dashboard/recycle', [RecycleController::class, 'index']);
 Route::get('dashboard/recycle/user', [RecycleController::class, 'user']);

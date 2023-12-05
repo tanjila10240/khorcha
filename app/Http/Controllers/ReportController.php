@@ -36,5 +36,9 @@ class ReportController extends Controller{
       public function current_month(){
       return view('admin.report.current-month');
    }
+
+      public function search(){
+      return view('admin.report.search');
+   }
 }
  

@@ -1,10 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 @php
-  $allIncome=App\Models\Income::where('income_status',1)->get();
-  $allExpense=App\Models\Expense::where('expense_status',1)->get();
-  $total_income=App\Models\Income::where('income_status',1)->sum('income_amount');
-  $total_expense=App\Models\Expense::where('expense_status',1)->sum('expense_amount');
+  $starting=$_GET['starting'];
+  $ending=$_GET['ending'];
+  $allIncome=App\Models\Income::where('income_status',1)->whereBetween('income_date',[$starting,$ending])->get();
+  $allExpense=App\Models\Expense::where('expense_status',1)->whereBetween('expense_date',[$starting,$ending])->get();
+  $total_income=App\Models\Income::where('income_status',1)->whereBetween('income_date',[$starting,$ending])->sum('income_amount');
+  $total_expense=App\Models\Expense::where('expense_status',1)->whereBetween('expense_date',[$starting,$ending])->sum('expense_amount');
   $total_savings=($total_income - $total_expense);
 @endphp
 <div class="row">
@@ -45,13 +47,22 @@
                 <form method="get" action="{{url('dashboard/report/search')}}">
                   <div class="row">
                     <div class="col-md-5">
+                      <div class="input-group">
                       <input type="text" class="form-control" id="startdate" name="starting" placeholder="From">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>      
                     </div>
                     <div class="col-md-5 pad_left_0">
-                      <input type="text" class="form-control" id="endtdate" name="ending" placeholder="To"> 
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="endtdate" name="ending" placeholder="To">
+                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                      </div>
                     </div>
                     <div class="col-md-2 pad_left_0">
-                      <input type="submit" class="btn btn-primary btn-sm secrch_btn" id="" value="SEARCH">    
+                      <div class="input-group">
+                      <input type="submit" class="btn btn-primary btn-sm secrch_btn" id="" value="SEARCH">
+                      <span class="input-group-text secrch_icon"><i class="fas fa-search"></i></span>  
+                      </div>  
                     </div>
                   </div>
                 </form> 

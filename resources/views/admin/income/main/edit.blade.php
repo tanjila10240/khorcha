@@ -4,7 +4,7 @@
     <div class="col-md-12 ">
         <form method="POST" action="{{url('dashboard/income/update')}}">
           @csrf
-            <div class="ca0rd mb-3">
+            <div class="card mb-3">
               <div class="card-header">
                 <div class="row">
                     <div class="col-md-8 card_title_part">
