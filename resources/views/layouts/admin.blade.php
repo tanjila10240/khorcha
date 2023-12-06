@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Panel</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datepicker.css">    
     <link rel="stylesheet" href="{{asset('contents/admin')}}/css/datatables.min.css">
